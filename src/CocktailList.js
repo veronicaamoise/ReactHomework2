@@ -25,10 +25,8 @@ class CocktailList extends React.Component {
             });
     }
 
-    showCocktailDetails = (cocktail) => {
-        this.setState({ showDetails: true, selectedCocktail: cocktail });
-    };
-
+    showCocktailDetails = (cocktail) => this.setState({ showDetails: true, selectedCocktail: cocktail });
+    
     hideCocktailDetails = () => this.setState({ showDetails: false });
 
     render() {
