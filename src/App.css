@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -14,8 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282c34;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,110 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.app-footer {
+  height: 40px;
+  width: 100%;  
+  background-color: lightgrey;
+}
+
+.categories-menu {
+  width: 100%;  
+}
+
+.categories-menu button {
+  width: 20%;
+  height: 40px;
+}
+
+.cocktail-category {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.cocktail-item {
+  width: 20%;
+  margin: 10px;  
+  display: inline-block;
+}
+
+.cocktail-item img {
+  width: 200px;
+  height: 200px;
+}
+
+.cocktail-item .cocktail-name {
+  text-decoration: underline;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 0;
+}
+
+.search-input input {
+  width: 500px;
+  height: 40px;
+  border: solid 1px darkgrey;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;  
+  font-size: medium; 
+}
+
+.search-input input:focus {
+  outline: none;
+}
+
+.details-page {  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4px;
+}
+
+.details-page .back-button {
+  display: block;
+  width: 100px;
+  height: 30px;
+}
+
+.details-section {
+  text-align: initial;
+  margin: 0 100px;
+}
+
+.details-section img {
+  width: 350px;
+  height: 350px;
+  display: inline-block;
+}
+
+.details-section button {
+  display: block;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+}
+
+.details-section .cocktail-info {
+  display: inline-block;
+  margin: 5px 50px;
+}
+
+.details-section .cocktail-info input {
+  display: block;
+  width: 300px;
+  height: 20px;
+  margin-bottom: 10px;
+  padding: 4px;
+  background: white;
+  border: none; 
+}
+
+.flex-container {
+  display: flex;  
 }
 
 @keyframes App-logo-spin {
