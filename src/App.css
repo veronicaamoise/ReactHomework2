@@ -38,9 +38,22 @@
   width: 100%;  
 }
 
-.categories-menu button {
-  width: 20%;
+.categories-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.categories-menu ul li {
+  display: inline-block;
+  width: calc(20% - 2px);
   height: 40px;
+  line-height: 40px;
+  border: 1px solid grey;
+  background-color: aliceblue;
+}
+
+.categories-menu ul li a {
+  text-decoration: none;
 }
 
 .cocktail-category {

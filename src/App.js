@@ -1,31 +1,18 @@
 import React from 'react';
 import './App.css';
-import CocktailList from './CocktailList.js';
-import CocktailDetailsPage from './CocktailDetailsPage.js';
 
-class App extends React.Component {
-   constructor(props) {
-    super(props);
-    this.categories = [
-      { name: 'Alcoholic', filter: 'a=Alcoholic' },
-      { name: 'Non-Alcoholic', filter: 'a=Non_Alcoholic' },
-      { name: 'Ordinary', filter: 'c=Ordinary_Drink' },
-      { name: 'Cocktail glass', filter: 'g=Cocktail_glass' },
-      { name: 'Champagne flute', filter: 'g=Champagne_flute' }];
-    this.state = {
-      showCocktailPage: false,
-      selectedCocktail: null
-    }
-  }
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-  openCocktailPage = (cocktail) => this.setState({ selectedCocktail: cocktail, showCocktailPage: true });
+import ChampagneFluteCocktailList from './cocktail/lists/ChampagneFluteCocktailList.js';
+import CocktailGlassesList from './cocktail/lists/CocktailGlassesList';
+import OrdinaryCocktailList from './cocktail/lists/OrdinaryCocktailList';
+import NonAlcoholicCocktailList from './cocktail/lists/NonAlcoholicCocktailList';
+import AlcoholicCocktailList from './cocktail/lists/AlcoholicCocktailList';
 
-  closeCocktailPage = () => this.setState({ showCocktailPage: false });
+import CocktailDetailsPage from './cocktail/item/CocktailDetailsPage.js';
+import Navbar from './NavBar';
 
-  render() {
-    const buttonList = this.categories.map((cat, index) => <button key={index}>{cat.name}</button>);
-    const categoryCompList = this.categories.map(cat =>
-      <CocktailList categoryName={cat.name} categoryFilter={cat.filter} openCocktailPage={this.openCocktailPage} key={cat.name} />);
+function App() {
     return (
       <div className="App">
         <header className="App-header">
@@ -33,17 +20,21 @@ class App extends React.Component {
             Cocktails
         </p>
         </header>
-        <div className="categories-menu">{buttonList}</div>
-        <div className="search-input" >
-          <input type="text" placeholder="Search by name" />
-        </div>
-        {this.state.showCocktailPage
-          ? <CocktailDetailsPage details={this.state.selectedCocktail} onBackClick={this.closeCocktailPage} />
-          : categoryCompList}
+        <BrowserRouter>
+          <div className="categories-menu"><Navbar /></div>
+          <Switch>
+            <Route path="/alcoholic" component={AlcoholicCocktailList}></Route>
+            <Route path="/non-alcoholic" component={NonAlcoholicCocktailList}></Route>
+            <Route path="/ordinary" component={OrdinaryCocktailList}></Route>
+            <Route path="/cocktail-glasses" component={CocktailGlassesList}></Route>
+            <Route path="/champagne-flutes" component={ChampagneFluteCocktailList}></Route>
+            <Route path="/cocktail/:cocktailId" component={CocktailDetailsPage}></Route>
+            <Route path="/" component={AlcoholicCocktailList}></Route>
+          </Switch>
+        </BrowserRouter>
         <footer className="app-footer"></footer>
       </div>
-    );
-  }
+    );  
 }
 
 export default App;
