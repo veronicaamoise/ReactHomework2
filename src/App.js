@@ -1,16 +1,13 @@
 import React from 'react';
-import './App.css';
+import './App.sass';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import ChampagneFluteCocktailList from './cocktail/lists/ChampagneFluteCocktailList.js';
-import CocktailGlassesList from './cocktail/lists/CocktailGlassesList';
-import OrdinaryCocktailList from './cocktail/lists/OrdinaryCocktailList';
-import NonAlcoholicCocktailList from './cocktail/lists/NonAlcoholicCocktailList';
-import AlcoholicCocktailList from './cocktail/lists/AlcoholicCocktailList';
+import CocktailList from './cocktail/lists/CocktailList';
 
 import CocktailDetailsPage from './cocktail/item/CocktailDetailsPage.js';
 import Navbar from './NavBar';
+import AddCocktailPage from './cocktail/add/AddCocktailPage.js';
 
 function App() {
     return (
@@ -23,13 +20,14 @@ function App() {
         <BrowserRouter>
           <div className="categories-menu"><Navbar /></div>
           <Switch>
-            <Route path="/alcoholic" component={AlcoholicCocktailList}></Route>
-            <Route path="/non-alcoholic" component={NonAlcoholicCocktailList}></Route>
-            <Route path="/ordinary" component={OrdinaryCocktailList}></Route>
-            <Route path="/cocktail-glasses" component={CocktailGlassesList}></Route>
-            <Route path="/champagne-flutes" component={ChampagneFluteCocktailList}></Route>
-            <Route path="/cocktail/:cocktailId" component={CocktailDetailsPage}></Route>
-            <Route path="/" component={AlcoholicCocktailList}></Route>
+            <Route path="/alcoholic"><CocktailList categoryName="Alcoholic" categoryFilter="a=Alcoholic"/></Route>
+            <Route path="/non-alcoholic"><CocktailList categoryName="Non Alcoholic" categoryFilter="a=Non_Alcoholic"/></Route>
+            <Route path="/ordinary"><CocktailList categoryName="Ordinary" categoryFilter="c=Ordinary_Drink"/></Route>
+            <Route path="/cocktail-glasses"><CocktailList categoryName="Cocktail glasses" categoryFilter="g=Cocktail_glass"/></Route>
+            <Route path="/champagne-flutes"><CocktailList categoryName="Champagne flute" categoryFilter="g=Champagne_flute"/></Route>
+            <Route path="/cocktail/add" component={AddCocktailPage}></Route>
+            <Route path="/cocktail/:cocktailId" component={CocktailDetailsPage}></Route>            
+            <Route path="/"><CocktailList categoryName="Alcoholic" categoryFilter="a=Alcoholic"/></Route>
           </Switch>
         </BrowserRouter>
         <footer className="app-footer"></footer>
